@@ -37,7 +37,7 @@
 					<br> <%=Item.getUnitPrice()%>원
 				<p> <%=Item.getDescription().substring(0,10)%>...
 				<p><%=Item.getUnitPrice()%>원
-				<p><a href="./Item.jsp?id=<%=Item.getItemId()%>" class="btn btn-secondary" role="button"> 상세 정보 &raquo;</a>
+				<p><a href="./item.jsp?id=<%=Item.getItemId()%>" class="btn btn-secondary" role="button"> 상세 정보 &raquo;</a>
 			</div>	
 		</div>			
 		<%

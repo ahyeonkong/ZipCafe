@@ -17,7 +17,7 @@
 
    <div class="p-5 mb-4 bg-body-tertiary rounded-3">
       <div class="container-fluid py-5">
-        <h1 class="display-5 fw-bold">상품정보</h1>
+        <h1 class="display-5 fw-bold">상품 정보</h1>
         <p class="col-md-8 fs-4">ItemInfo</p>      
       </div>
     </div>
@@ -36,8 +36,8 @@
 				<p><b>분류</b> : <%=Item.getCategory()%>
 				<p><b>재고수</b> : <%=Item.getUnitsInStock()%>
 				<h4><%=Item.getUnitPrice()%>원</h4>
-				<p><a href="#" class="btn btn-info"> 상품주문 &raquo;</a> 
-					<a href="./Items.jsp" class="btn btn-secondary"> 상품목록 &raquo;</a>
+				<p><a href="#" class="btn btn-info"> 상품 주문 &raquo;</a> 
+					<a href="./items.jsp" class="btn btn-secondary"> 상품 목록 &raquo;</a>
 			</div>
 		</div>
 	<jsp:include page="footer.jsp" />
