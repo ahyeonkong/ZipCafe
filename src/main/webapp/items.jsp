@@ -17,7 +17,7 @@
    
    <div class="p-5 mb-4 bg-body-tertiary rounded-3">
       <div class="container-fluid py-5">
-        <h1 class="display-5 fw-bold">상품목록</h1>
+        <h1 class="display-5 fw-bold">상품 목록</h1>
         <p class="col-md-8 fs-4">ItemList</p>      
       </div>
     </div>
@@ -37,7 +37,7 @@
 					<br> <%=Item.getUnitPrice()%>원
 				<p> <%=Item.getDescription().substring(0,10)%>...
 				<p><%=Item.getUnitPrice()%>원
-				<p><a href="./Item.jsp?id=<%=Item.getItemId()%>" class="btn btn-secondary" role="button"> 상세 정보 &raquo;</a>
+				<p><a href="./item.jsp?id=<%=Item.getItemId()%>" class="btn btn-secondary" role="button"> 상세 정보 &raquo;</a>
 			</div>	
 		</div>			
 		<%
