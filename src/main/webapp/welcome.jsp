@@ -13,7 +13,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     
     <!-- 커스텀 CSS -->
-    <link href="css/style.css" rel="stylesheet">
+    <link href="resources/css/style.css" rel="stylesheet">
 </head>
 <body>
     <jsp:include page="header.jsp" />

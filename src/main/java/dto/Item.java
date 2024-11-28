@@ -11,6 +11,7 @@ public class Item implements Serializable{
 	private String description; 	//설명
 	private String category; 		//분류
 	private long unitsInStock; 		//재고개수
+	private String filename;		//이미지 파일명
 	
 	public Item() {
 		super();
@@ -69,6 +70,13 @@ public class Item implements Serializable{
 	public void setUnitsInStock(long unitsInStock) {
 		this.unitsInStock = unitsInStock;
 	}
-	
+
+	public String getFilename() {
+		return filename;
+	}
+
+	public void setFilename(String filename) {
+		this.filename = filename;
+	}
 	
 }

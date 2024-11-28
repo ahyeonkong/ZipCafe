@@ -8,6 +8,7 @@
 <html>
 <head>
  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+ <link rel ="stylesheet" href ="./resources/css/bootstrap.min.css" />
 
 <title>상품 목록</title>
 </head>
@@ -29,15 +30,16 @@
 	 <div class="row align-items-md-stretch   text-center">	 	
 	 <%
 		for (int i = 0; i < listOfItems.size(); i++) {
-			Item Item = listOfItems.get(i);
+			Item item = listOfItems.get(i);
 	  %>
      	<div class="col-md-4">
-       		<div class="h-100 p-2">			
-				<h5><b><%=Item.getName()%></b></h5>
-					<br> <%=Item.getUnitPrice()%>원
-				<p> <%=Item.getDescription().substring(0,10)%>...
-				<p><%=Item.getUnitPrice()%>원
-				<p><a href="./item.jsp?id=<%=Item.getItemId()%>" class="btn btn-secondary" role="button"> 상세 정보 &raquo;</a>
+       		<div class="h-100 p-2">	
+       			<img src="./resources/images/<%=item.getFilename()%>" style="width: 250; height:350" />	
+				<h5><b><%=item.getName()%></b></h5>
+					<br> <%=item.getUnitPrice()%>원
+				<p> <%=item.getDescription().length() > 10 ? item.getDescription().substring(0,10) + "..." : item.getDescription()%>
+				<p><%=item.getUnitPrice()%>원
+				<p><a href="./item.jsp?id=<%=item.getItemId()%>" class="btn btn-secondary" role="button"> 상세 정보 &raquo;</a>
 			</div>	
 		</div>			
 		<%
