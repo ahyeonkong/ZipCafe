@@ -10,8 +10,9 @@ public class Item implements Serializable{
 	private int unitPrice; 	    	//가격
 	private String description; 	//설명
 	private String category; 		//분류
-	private long unitsInStock; 		//재고개수
+	private int unitsInStock; 		//재고개수
 	private String filename;		//이미지 파일명
+	private int quantity;			//장바구니 수량
 	
 	public Item() {
 		super();
@@ -63,11 +64,11 @@ public class Item implements Serializable{
 		this.category = category;
 	}
 
-	public long getUnitsInStock() {
+	public int getUnitsInStock() {
 		return unitsInStock;
 	}
 
-	public void setUnitsInStock(long unitsInStock) {
+	public void setUnitsInStock(int unitsInStock) {
 		this.unitsInStock = unitsInStock;
 	}
 
@@ -77,6 +78,14 @@ public class Item implements Serializable{
 
 	public void setFilename(String filename) {
 		this.filename = filename;
+	}
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
 	}
 	
 }
