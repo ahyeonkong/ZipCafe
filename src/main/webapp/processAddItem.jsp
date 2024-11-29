@@ -38,7 +38,7 @@
     String unitsInStock = multi.getParameter("unitsInStock");
 
     Integer price = unitPrice.isEmpty() ? 0 : Integer.valueOf(unitPrice);
-    long stock = unitsInStock.isEmpty() ? 0 : Long.valueOf(unitsInStock);
+    Integer stock = unitsInStock.isEmpty() ? 0 : Integer.valueOf(unitsInStock);
 
     // 파일 업로드 처리
     String fileName = "";
