@@ -5,15 +5,16 @@
 <%@ page import="java.sql.*"%>
 <%@ include file="dbconn.jsp" %>
 <%@ page import = "java.io.*" %>
+
 <%
 	request.setCharacterEncoding("UTF-8");
 
 	String filename = "";
-	
+
 	// 서버 배포 경로와 로컬 경로 설정
 	String serverFolder = "C:\\Users\\KAH\\eclipse-workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\HomeCafe\\resources\\images";
 	String localFolder = "C:\\Users\\KAH\\eclipse-workspace\\HomeCafe\\src\\main\\webapp\\resources\\images";
-
+	
 	String encType = "utf-8";
 	int maxSize = 5 * 1024 * 1024;
 	
@@ -35,7 +36,7 @@
 	
 	// MultipartRequest 설정 (서버 경로에 저장)
 	MultipartRequest multi = new MultipartRequest(request, serverFolder, maxSize, encType, new DefaultFileRenamePolicy());
-	
+
 	String itemId = multi.getParameter("itemId");
 	String name = multi.getParameter("name");
 	String unitPrice = multi.getParameter("unitPrice");
@@ -50,12 +51,12 @@
 	else
 		price = Integer.valueOf(unitPrice);
 
-	int stock;
+	long stock;
 
 	if (unitsInStock.isEmpty())
 		stock = 0;
 	else
-		stock = Integer.valueOf(unitsInStock);
+		stock = Long.valueOf(unitsInStock);
 	
 	// 파일 정보 가져오기
 	Enumeration files = multi.getFileNames();
@@ -80,25 +81,57 @@
 	    fos.close();
 	}
 	
-	PreparedStatement pstmt = null;	
+	PreparedStatement pstmt = null;
+	ResultSet rs = null;
 	
-	String sql = "insert into item values(?,?,?,?,?,?,?)";
-		
+	String sql = "select * from item where itemId = ?";
 	pstmt = conn.prepareStatement(sql);
 	pstmt.setString(1, itemId);
-	pstmt.setString(2, name);
-	pstmt.setInt(3, price);
-	pstmt.setString(4, description);
-	pstmt.setString(5, category);
-	pstmt.setLong(6, stock);
-	pstmt.setString(7, fileName);
-	pstmt.executeUpdate();
+	rs = pstmt.executeQuery();	
 	
+	
+	if (rs.next()) {		
+		// 이미지 파일이 있는 경우
+		if (fileName != null) {
+		    sql = "UPDATE item SET name=?, unitPrice=?, description=?, category=?, unitsInStock=?, fileName=? WHERE itemId=?";    
+		    pstmt = conn.prepareStatement(sql);
+		    pstmt.setString(1, name);
+		    pstmt.setInt(2, price);
+		    pstmt.setString(3, description);
+		    pstmt.setString(4, category);
+		    pstmt.setLong(5, stock);
+		    pstmt.setString(6, fileName);    
+		    pstmt.setString(7, itemId);    
+		} else {
+		    // 이미지 파일이 없는 경우
+		    sql = "UPDATE item SET name=?, unitPrice=?, description=?, category=?, unitsInStock=? WHERE itemId=?";    
+		    pstmt = conn.prepareStatement(sql);
+		    pstmt.setString(1, name);
+		    pstmt.setInt(2, price);
+		    pstmt.setString(3, description);
+		    pstmt.setString(4, category);
+		    pstmt.setLong(5, stock);        
+		    pstmt.setString(6, itemId);    
+		}
+
+		// 트랜잭션 처리 추가
+		conn.setAutoCommit(false);
+		try {
+		    pstmt.executeUpdate();
+		    conn.commit();
+		} catch (SQLException e) {
+		    conn.rollback();
+		    throw e;
+		} finally {
+		    conn.setAutoCommit(true);
+		}		
+	}
+
 	if (pstmt != null)
 		pstmt.close();
 	if (conn != null)
 		conn.close();
 	
-	response.sendRedirect("items.jsp");
+	response.sendRedirect("editItem.jsp?edit=update");
 
 %>
