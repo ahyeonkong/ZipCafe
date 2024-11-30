@@ -1,63 +1,51 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!doctype html>
-<html lang="ko">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <title>Zip Cafe</title>
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/album/">
-    
-    <!-- 부트스트랩 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    
-    <!-- 커스텀 CSS -->
-    <link href="resources/css/style.css" rel="stylesheet">
+<%@ page contentType="text/html; charset=utf-8"%>
+<%@ page import="java.util.Date"%>
+<html >
+<head>    
+    <link rel ="stylesheet" href ="./resources/css/bootstrap.min.css" />
+	<title>Welcome</title>
 </head>
 <body>
-    <jsp:include page="header.jsp" />
+<div class="container py-4">
+   <%@ include file="menu.jsp"%>
     
-    <main>
-        <section class="py-5 text-center container">
-            <div class="row py-lg-5">
-                <div class="col-lg-6 col-md-8 mx-auto">
-                    <h1 class="fw-light">Zip Cafe</h1>
-                    <p class="lead text-muted">홈카페 쇼핑몰</p>
-                </div>
-            </div>
-        </section>
+	<%!String greeting = "홈카페 쇼핑몰에 오신 것을 환영합니다";
+	String tagline = "Welcome to HomeCafe Market!";%>
+	
+    <div class="p-5 mb-4 bg-body-tertiary rounded-3">
+      <div class="container-fluid py-5">
+        <h1 class="display-5 fw-bold"><%=greeting%></h1>
+        <p class="col-md-8 fs-4">HomeCafe</p>      
+      </div>
+    </div>
 
-        <div class="album py-5 bg-light">
-            <div class="container">
-                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                    <c:forEach var="i" begin="1" end="9">
-                        <div class="col">
-                            <div class="card shadow-sm">
-                                <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 이미지" preserveAspectRatio="xMidYMid slice" focusable="false">
-                                    <title>Placeholder</title>
-                                    <rect width="100%" height="100%" fill="#55595c"/>
-                                    <text x="50%" y="50%" fill="#eceeef" dy=".3em">이미지</text>
-                                </svg>
-                                <div class="card-body">
-                                    <p class="card-text">설명</p>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="btn-group">
-                                            <button type="button" class="btn btn-sm btn-outline-secondary">상세보기</button>
-                                        </div>
-                                        <small class="text-muted">9 mins</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </c:forEach>
-                </div>
-            </div>
+    <div class="row align-items-md-stretch   text-center">
+      <div class="col-md-12">
+        <div class="h-100 p-5">
+          <h3><%=tagline%></h3>     
+          
+          <%
+				Date day = new java.util.Date();
+				String am_pm;
+				int hour = day.getHours();
+				int minute = day.getMinutes();
+				int second = day.getSeconds();
+				if (hour / 12 == 0) {
+					am_pm = "AM";
+				} else {
+					am_pm = "PM";
+					hour = hour - 12;
+				}
+				String CT = hour + ":" + minute + ":" + second + " " + am_pm;
+				out.println("현재 접속  시각: " + CT + "\n");
+			%>    
         </div>
-    </main>
-    
-    <jsp:include page="footer.jsp" />
-    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+      </div>   
+ 	</div> 
+	
+	<%@ include file="footer.jsp"%>
+   
+  </div>
 </body>
 </html>
+  
