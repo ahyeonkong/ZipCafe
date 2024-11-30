@@ -104,7 +104,7 @@
 				<td> </td>
 				<td> </td>
 				<td class="text-right">	<strong>총액: </strong></td>
-				<td class="text-center text-danger"><strong><%=sum%> </strong></td>
+				<td class="text-center text-danger"><strong><fmt:formatNumber value="<%=sum%>" type="number"/>원</strong></td>
 			</tr>
 			</table>			
 				<a href="./shoppingInfo.jsp?cartId=<%=shopping_cartId%>"class="btn btn-secondary" role="button"> 이전 </a>
