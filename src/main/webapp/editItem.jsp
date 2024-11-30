@@ -45,7 +45,7 @@ function deleteConfirm(itemId) {
        		    <img src="./resources/images/<%=rs.getString("filename")%>" style="width: 250px; height: 200px; object-fit: cover;" />
 
 				<p><h5><b><%=rs.getString("name")%></b></h5>
-				<p> <%=rs.getString("description").substring(0,30)%>....
+				<p> <%=rs.getString("description").substring(0,20)%>....
 				<p><fmt:formatNumber value="<%=rs.getString(\"unitPrice\")%>" type="number"/>원</p>
 				<p><%
 						if (edit.equals("update")) {
