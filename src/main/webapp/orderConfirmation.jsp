@@ -2,6 +2,8 @@
 <%@ page contentType="text/html; charset=utf-8"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="java.net.URLDecoder"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <%
 	request.setCharacterEncoding("UTF-8");
 
@@ -88,8 +90,12 @@
 			<tr>
 				<td class="text-center"><em><%=item.getName()%> </em></td>
 				<td class="text-center"><%=item.getQuantity()%></td>
-				<td class="text-center"><%=item.getUnitPrice()%>원</td>
-				<td class="text-center"><%=total%>원</td>
+				<td class="text-center">
+				    <fmt:formatNumber value="<%=item.getUnitPrice()%>" type="number"/>원
+				</td>
+				<td class="text-center">
+				    <fmt:formatNumber value="<%=total%>" type="number"/>원
+				</td>
 			</tr>
 			<%
 				}

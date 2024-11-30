@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=utf-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <html>
 <head>
  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -15,7 +16,7 @@
 
    <div class="p-5 mb-4 bg-body-tertiary rounded-3">
       <div class="container-fluid py-5">
-        <h1 class="display-5 fw-bold"><fmt:message key="addItem" /></h1>
+        <h1 class="display-5 fw-bold">상품 등록</h1>
         <p class="col-md-8 fs-4">Item Addition</p>      
       </div>
     </div>
@@ -42,7 +43,7 @@
 				</div>
 			</div>
 				<div class="mb-3 row">
-				<label class="col-sm-2"><fmt:message key="unitPrice" /></label>
+				<label class="col-sm-2"><fmt:message key="unitPrice"  /></label>
 				<div class="col-sm-3">
 					<input type="text" id="unitPrice" name="unitPrice" class="form-control" >
 				</div>
