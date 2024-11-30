@@ -1,6 +1,7 @@
 <%@page import="dto.Item"%>
 <%@ page contentType="text/html; charset=utf-8"%>
 <%@ page import="java.util.ArrayList"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
 <link rel="stylesheet" href="./resources/css/bootstrap.min.css" />
@@ -52,9 +53,9 @@
 				%>
 				<tr>
 					<td><%=item.getItemId()%> - <%=item.getName()%></td>
-					<td><%=item.getUnitPrice()%></td>
+					<td><fmt:formatNumber value="<%=item.getUnitPrice()%>" type="number"/>원</td>
 					<td><%=item.getQuantity()%></td>
-					<td><%=total%></td>
+					<td><fmt:formatNumber value="<%=total%>" type="number"/>원</td>
 					<td><a href="./removeCart.jsp?id=<%=item.getItemId()%>" class="badge text-bg-danger">삭제</a></td>
 				</tr>
 				<%
@@ -64,7 +65,7 @@
 					<th></th>
 					<th></th>
 					<th>총액</th>
-					<th><%=sum%></th>
+					<th><fmt:formatNumber value="<%=sum%>" type="number"/>원</th>
 					<th></th>
 				</tr>
 			</table>
